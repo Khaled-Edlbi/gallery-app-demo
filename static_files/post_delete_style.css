@@ -1,0 +1,144 @@
+body {
+    background: var(--greyTheme);
+    color: var(--primary);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    margin: 0 10px 40px 10px ;
+}
+
+img, video {
+    width: 350px;
+    min-height: 8em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--elevationShadow);
+    margin: 0 auto;
+    transition: .3s ease;
+}
+
+img:hover, video:hover,
+img:focus, video:focus {
+    transform: scale(1.02);
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.back-btn, .delete-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--glassGrey);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px var(--shallowShadow);
+    font-size: 18px;
+    color: var(--primary);
+    overflow: hidden;
+    cursor: pointer;
+    transition-duration: .3s;
+    margin: 20px;
+}
+
+.back-btn:hover,
+.delete-btn:hover,
+.back-btn:focus,
+.delete-btn:focus {
+    width: 140px;
+    align-items: center;
+    border-radius: 50px;
+    transition-duration: .3s;
+}
+
+.back-btn:hover,
+.back-btn:focus {
+    background-color: var(--cyanTheme);
+}
+
+.back-btn i {
+    font-size: 20px;
+    transition-duration: .3s;
+}
+
+.back-btn:hover i,
+.back-btn:focus i {
+    margin-right: 50px;
+    transition-duration: .3s;
+}
+
+.back-btn::before {
+    position: absolute;
+    left: -45px;
+    content: "Back";
+    font-size: 18px;
+    transition-duration: .3s;
+}
+
+.back-btn:hover::before,
+.back-btn:focus::before {
+    transform: translateX(105px);
+    transition-duration: .3s;
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+    background-color: var(--danger);
+}
+
+.delete-btn i {
+    font-size: 16px;
+    transition-duration: .3s;
+}
+
+.delete-btn:hover i,
+.delete-btn:focus i {
+    font-size: 60px;
+    margin-top: 70px;
+    transition-duration: .3s;
+}
+
+.delete-btn::before {
+    position: absolute;
+    top: -25px;
+    content: "Delete";
+    transition-duration: .3s;
+}
+
+.delete-btn:hover::before,
+.delete-btn:focus::before {
+    font-size: 16px;
+    transform: translateY(30px);
+    transition-duration: .3s;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .container {
+        padding-bottom: 25px;
+    }
+
+    img {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+}

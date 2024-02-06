@@ -1,0 +1,150 @@
+body {
+    background: url('backgrounds/auth.jpg');
+    backdrop-filter: blur(20px);
+    background-size: cover;
+    background-position: center;
+}
+
+#all-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    width: 600px;
+    background: linear-gradient(135deg, var(--glassyGrey), transparent);
+    border-radius: 20px;
+    border: 2px solid var(--glassBorder);
+    box-shadow: 0 0 15px var(--shadow);
+    color: var(--primary);
+    padding: 30px 40px;
+    margin: 20px;
+}
+
+.form-box h1 {
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--glassBorder);
+    margin-bottom: 60px;
+}
+
+.form-box label {
+    font-size: 20px;
+    margin: 20px;
+}
+
+.helptext {
+    color: var(--secondary);
+    margin: 20px 0 25px 25px;
+}
+
+.helptext li {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.form-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: 2px solid var(--glassBorder);
+    border-radius: 40px;
+    box-shadow: 0 5px 15px var(--shadow);
+    font-size: 16px;
+    color: var(--primary);
+    padding: 20px;
+    margin: 10px 0 60px 0;
+    transition: .3s ease;
+}
+
+.form-box input::placeholder {
+    color: var(--secondary);
+    transition: .3s ease;
+}
+
+.form-box input:hover::placeholder,
+.form-box input:focus::placeholder {
+    color: var(--primary);
+}
+
+.form-box input:hover,
+.form-box input:focus {
+    border-color: var(--cyanTheme);
+}
+
+.sign-up-btn {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 60px;
+    background: var(--primary);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 15px var(--shadow);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #363636;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+}
+
+.sign-up-btn:hover,
+.sign-up-btn:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px var(--hoverShadow);
+}
+
+.errorlist {
+    list-style-type: none;
+    color: var(--danger);
+    background: var(--glassGrey);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .form-box {
+        width: 100%;
+        padding: 20px 20px;
+        margin: 10px;
+    }
+
+    .form-box h1 {
+        font-size: 20px;
+        margin-bottom: 45px;
+    }
+
+    .form-box label {
+        font-size: 15px;
+        margin: 20px;
+    }
+
+    .helptext {
+        font-size: 13px;
+        margin: 15px 0 20px 20px;
+    }
+
+    .helptext li {
+        margin-left: 15px;
+        margin-bottom: 15px;
+    }
+
+    .form-box input {
+        font-size: 13px;
+        padding: 15px;
+        margin: 8px 0 45px 0;
+    }
+
+    .sign-up-btn {
+        height: 45px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}

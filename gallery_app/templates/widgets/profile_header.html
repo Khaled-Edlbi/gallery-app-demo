@@ -1,0 +1,245 @@
+<header>
+
+    <input type="checkbox" id="nav_check" hidden>
+
+    <a href="#" class="logo">Gallery<i id="heart" class="fa-regular fa-heart"></i>App</a>
+
+        <label for="nav_check" class="hamburger">
+            <div class="remove"></div>
+            <div class="leg"></div>
+            <div class="x-icon"></div>
+            <div class="remove"></div>
+        </label>
+
+    <nav class="navbar">
+
+        <ul>
+            <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i>Profile</a></li>
+            <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i>Home</a></li>
+            <li><a href="#"><i class="fa-solid fa-icons"></i>Gallery </a>
+                <ul>
+                    <li><a href="{% url 'photos' %}"><i class="fa-solid fa-images"></i>Photos</a></li>
+                    <li><a href="{% url 'videos' %}"><i class="fa-solid fa-photo-film"></i>Videos</a></li>
+                    <li><a href="{% url 'voices' %}"><i class="fa-solid fa-microphone"></i>Voices</a></li>
+                    <li><a href="{% url 'chats' %}"><i class="fa-sharp fa-solid fa-comments"></i>Chats</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i>Log Out</a></li>
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<style>
+
+    /* Fonts */
+
+    @import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+</style>
+
+<style>
+
+    header {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--glassGrey);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 5px 10px var(--shallowShadow);
+        padding: 3px 10px;
+    }
+
+    .logo {
+        font-family: 'Averia Sans Libre', cursive;
+        font-weight: bolder;
+        font-size: 30px;
+        letter-spacing: 0.7px;
+        color: var(--primary);
+        text-shadow: 0 0 5px var(--shallowShadow);
+        border-radius: 20px;
+        margin-left: 60px;
+        margin-bottom: 3px;
+        transition: 0.4s ease;
+    }
+
+    .logo i {
+        padding: 3px;
+    }
+
+    .logo:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 5px var(--shallowShadow);
+    }
+
+    .navbar {
+        position: absolute;
+        top: 46px; left: -335px;
+        width: 335px;
+        height: 100vh;
+        height: 100svh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        background: linear-gradient(135deg, rgb(54, 54, 54), rgb(54, 54, 54, 0.95));
+        overflow: scroll;
+        transition: .4s ease;
+    }
+
+    #nav_check:checked ~ nav {
+        left: 0;
+        box-shadow: 10px 8px 10px var(--shallowShadow);
+    }
+
+    .navbar ul {
+        list-style: none;
+        text-align: center;
+    }
+
+    .navbar ul li {
+        display: inline-block;
+        width: 95%;
+        margin-top: 20px;
+    }
+
+    .navbar ul li ul {
+        display: none;
+    }
+
+    .navbar ul li:hover > ul {
+        display: initial;
+    }
+
+    .navbar ul li a {
+        display: block;
+        font-family: 'Varela Round', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--primary);
+        text-shadow: 0 0 5px var(--shallowShadow);
+        border-radius: 5px;
+        padding: 15px;
+        transition: 0.2s ease;
+    }
+
+    .navbar ul li a:hover {
+        background-color: var(--glassGrey);
+        box-shadow: 0 0 5px var(--shallowShadow);
+        transform: scale(1.03);
+    }
+
+    .navbar ul li i {
+        padding-right: 15px;
+    }
+
+    .navbar ul li ul li {
+        border-top: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    .navbar ul li ul li i {
+        padding-right: 15px;
+    }
+
+    .hamburger {
+        position: relative;
+        height: fit-content;
+        padding: 3px 8px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .hamburger:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hamburger div {
+        width: 27px;
+        height: 3px;
+        margin: 5px 0;
+        background-color: var(--primary);
+        border-radius: 500px;
+        transition: .4s ease;
+    }
+
+    .hamburger .x-icon {
+        position: absolute;
+        top: 11px;
+        opacity: 0;
+        transition: .4s ease;
+    }
+
+    /* x-icon animation */
+
+    #nav_check:checked ~ .hamburger .remove {
+        opacity: 0;
+        width: 0;
+    }
+
+    #nav_check:checked ~ .hamburger .leg {
+        transform: rotate(45deg);
+    }
+
+    #nav_check:checked ~ .hamburger .x-icon {
+        transform: rotate(135deg);
+        opacity: 1;
+    }
+
+</style>
+
+<style>
+
+    @media only screen and (max-width: 940px) {
+
+        header {
+            padding: 2.5px 10px 2.5px 18px;
+        }
+
+        .logo {
+            margin-left: 0;
+        }
+
+        .navbar {
+            top: 45px;
+            left: -275px;
+            width: 275px;
+        }
+
+        #nav_check:checked ~ .logo {
+            margin-left: 24px;
+        }
+    }
+
+</style>
+
+
+<script>
+
+    // Beating Heart Animation
+
+    var logo = document.querySelector(".logo");
+    var heart = document.getElementById("heart");
+    var animationTimeout;
+
+    function startHeartAnimation() {
+        heart.classList.add("fa-regular", "fa-heart", "fa-beat");
+    }
+
+    function stopHeartAnimation() {
+        animationTimeout = setTimeout(function() {
+            heart.classList.remove("fa-beat");
+        }, 500);
+    }
+
+    logo.addEventListener("mouseenter", startHeartAnimation);
+    logo.addEventListener("mouseleave", stopHeartAnimation);
+    logo.addEventListener("focus", startHeartAnimation);
+    logo.addEventListener("blur", stopHeartAnimation);
+
+</script>

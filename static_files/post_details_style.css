@@ -1,0 +1,302 @@
+body {
+    background: var(--greyTheme);
+    color: var(--primary);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px 0;
+}
+
+.title {
+    width: 40%;
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px var(--shallowShadow);
+    border-bottom: 1px solid var(--primary);
+    padding: 10px;
+    margin-bottom: 65px;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    width: 24em;
+    min-height: 8em;
+    background: linear-gradient(135deg, var(--glassGrey), var(--gradientTransparent));
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--elevationShadow);
+    margin: 20px;
+    transition: 0.3s ease;
+}
+
+.card:hover,
+.card:focus {
+    min-height: 250px;
+}
+
+.card img,
+.card video {
+    width: 100%;
+    border-radius: 2px;
+}
+
+.card .tag {
+    position: absolute;
+    top: 0; right: 0;
+    transform: translate(0, 0);
+    background: var(--glassGrey);
+    backdrop-filter: blur(100px);
+    color: #FDEE00;
+    padding: 8px;
+    border-bottom-left-radius: 10px;
+}
+
+.card .tag i {
+    font-size: 18px;
+}
+
+.card .card-content {
+    position: absolute;
+    bottom: -270px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    max-height: 250px;
+    background: var(--glassGrey);
+    backdrop-filter: blur(100px);
+    border-radius: 2px;
+    padding: 15px;
+    overflow: scroll;
+    transition: 0.3s ease;
+}
+
+.card:hover .card-content {
+    bottom: 0;
+}
+
+.card-content .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--glassGrey);
+    margin-bottom: 20px;
+}
+
+.card-head .author {
+    display: flex;
+    align-items: center;
+}
+
+.card-head .author .profile-img {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--glassGrey);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--shallowShadow);
+}
+
+.card-head .author .profile-img:hover,
+.card-head .author .profile-img:focus {
+    transform: scale(1.02);
+}
+
+.card-head .author .profile-img img {
+    width: 100%;
+}
+
+.card-head .author span {
+    font-size: 16px;
+    margin: 10px;
+}
+
+.card-head .download-btn {
+    font-size: 20px;
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--shallowShadow);
+    padding: 5px 10px;
+}
+
+.download-btn:hover,
+.download-btn:focus {
+    transform: scale(1.05);
+}
+
+.title-and-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-content .date {
+    color: var(--secondary);
+}
+
+.card-content p {
+    white-space: pre-line;
+    margin: 10px 0;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.edit-btn, .done-btn, .delete-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--glassGrey);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px var(--shallowShadow);
+    font-size: 18px;
+    color: var(--primary);
+    overflow: hidden;
+    cursor: pointer;
+    transition-duration: .3s;
+    margin: 20px;
+}
+
+.edit-btn:hover,
+.done-btn:hover,
+.delete-btn:hover,
+.edit-btn:focus,
+.done-btn:focus,
+.delete-btn:focus {
+    width: 140px;
+    align-items: center;
+    border-radius: 50px;
+    transition-duration: .3s;
+}
+
+.edit-btn:hover,
+.edit-btn:focus {
+    background-color: var(--cyanTheme);
+}
+
+.edit-btn i {
+    font-size: 17px;
+    transition-duration: .3s;
+}
+
+.edit-btn:hover i,
+.edit-btn:focus i {
+    margin-right: 42px;
+    transition-duration: .3s;
+}
+
+.edit-btn::before {
+    position: absolute;
+    right: -40px;
+    content: "Edit";
+    transition-duration: .3s;
+}
+
+.edit-btn:hover::before,
+.edit-btn:focus::before {
+    transform: translateX(-78px);
+    transition-duration: .3s;
+}
+
+.done-btn:hover,
+.done-btn:focus {
+    background-color: var(--success);
+}
+
+.done-btn i {
+    font-size: 20px;
+    transition-duration: .3s;
+}
+
+.done-btn:hover i,
+.done-btn:focus i {
+    margin-bottom: 80px;
+    transition-duration: .3s;
+}
+
+.done-btn::before {
+    position: absolute;
+    top: 50px;
+    content: "Done";
+    transition-duration: .3s;
+}
+
+.done-btn:hover::before,
+.done-btn:focus::before {
+    font-size: 18px;
+    transform: translateY(-37px);
+    transition-duration: .3s;
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+    background-color: var(--danger);
+}
+
+.delete-btn i {
+    font-size: 16px;
+    transition-duration: .3s;
+}
+
+.delete-btn:hover i,
+.delete-btn:focus i {
+    font-size: 60px;
+    margin-top: 70px;
+    transition-duration: .3s;
+}
+
+.delete-btn::before {
+    position: absolute;
+    top: -25px;
+    content: "Delete";
+    transition-duration: .3s;
+}
+
+.delete-btn:hover::before,
+.delete-btn:focus::before {
+    font-size: 16px;
+    transform: translateY(30px);
+    transition-duration: .3s;
+}
+
+@media only screen and (max-width: 940px) {
+
+    .title {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+
+    .container {
+        padding: 100px 0 35px 0;
+    }
+
+    .title {
+        font-size: 2em;
+        width: 75vw;
+    }
+
+    .card {
+        width: 90%;
+    }
+}

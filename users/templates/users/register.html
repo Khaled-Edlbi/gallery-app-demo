@@ -1,0 +1,55 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'register_style.css' %}">
+    <title>Register</title>
+{% endblock heads %}
+
+
+{% block content %}
+
+    <div class="form-box">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <h1>Sign Up</h1>
+
+            {{ form.as_div }}
+
+            <button class="sign-up-btn" id="ripples" type="submit">Sign Up</button>
+
+        </form>
+
+    </div>
+
+
+    <script>
+
+        var username = document.getElementById("id_username")
+        var email = document.getElementById("id_email")
+        var password1 = document.getElementById("id_password1")
+        var password2 = document.getElementById("id_password2")
+
+        if (username) {
+            username.setAttribute("placeholder", "Username")
+        }
+
+        if (email) {
+            email.setAttribute("placeholder", "yourname@example.com")
+        }
+
+        if (password1) {
+            password1.setAttribute("placeholder", "Password")
+        }
+
+        if (password2) {
+            password2.setAttribute("placeholder", "Password confirmation")
+        }
+
+    </script>
+
+    {% include "widgets/ripples_effect.html" %}
+
+{% endblock content %}

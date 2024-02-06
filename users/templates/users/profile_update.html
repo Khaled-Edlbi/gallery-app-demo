@@ -1,0 +1,60 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'profile_update_style.css' %}">
+    <title>{{ user.username }} Profile</title>
+{% endblock heads %}
+
+
+{% block header %}
+    {% include "widgets/profile_header.html" %}
+{% endblock header %}
+
+
+{% block content %}
+
+    <div class="form-box">
+
+        <input type="file" accept="image/*" id="file-input" hidden>
+
+        <button class="upload-btn" type="button">
+            <img class="uploaded-image" src="{{ current_profile.image }}">
+            <span class="upload-icon"></span>
+            <div class="spinner" style="display: none;">
+                {% include "widgets/spinner.html" %}
+            </div>
+        </button>
+
+        <form method="POST">
+
+            {% csrf_token %}
+            {{ user_form.as_div }}
+
+            <input type="text" maxlength="100" value="{{ current_profile.image }}" required name="image" id="id_image" hidden>
+            <button class="update-btn" id="ripples" type="submit">Update</button>
+
+        </form>
+
+    </div>
+
+    {% include "widgets/ripples_effect.html" %}
+
+    <script>
+        var helplabel = document.querySelector(".helptext")
+
+        if (helplabel) {
+            helplabel.parentNode.removeChild(helplabel)
+        };
+    </script>
+
+    <script>
+        //  API Headers
+        postType = "image"
+        const accessToken = "{{ access_token }}"
+        const album = "iDZwfLO"
+        const file_type = "image"
+    </script>
+
+    <script src="{% static 'upload_api.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,115 @@
+<div class="preLoader">
+
+    <span id="part01" style="--i:1;"></span>
+    <span id="part01" style="--i:2;"></span>
+    <span id="part01" style="--i:3;"></span>
+    <span id="part01" style="--i:4;"></span>
+    <span id="part01" style="--i:5;"></span>
+    <span id="part01" style="--i:6;"></span>
+    <span id="part01" style="--i:7;"></span>
+    <span id="part01" style="--i:8;"></span>
+    <span id="part01" style="--i:9;"></span>
+    <span id="part01" style="--i:10;"></span>
+    <span id="part02" style="--j:1;"></span>
+    <span id="part02" style="--j:2;"></span>
+    <span id="part02" style="--j:3;"></span>
+    <span id="part02" style="--j:4;"></span>
+    <span id="part02" style="--j:5;"></span>
+    <span id="part02" style="--j:6;"></span>
+    <span id="part02" style="--j:7;"></span>
+    <span id="part02" style="--j:8;"></span>
+    <span id="part02" style="--j:9;"></span>
+    <span id="part02" style="--j:10;"></span>
+
+</div>
+
+
+<style>
+
+    .preLoader {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 999;
+        width: 100px;
+        height: 100px;
+        transition: 0.5s ease;
+    }
+
+    .preLoader span {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        animation: animateBg 15s linear infinite;
+    }
+
+    #part01 {
+        transform: rotate(calc(18deg * var(--i)));
+    }
+
+    #part02 {
+        transform: rotate(calc(18deg * (var(--j) + 10)));
+    }
+
+    @keyframes animateBg {
+
+        0% {
+            filter: hue-rotate(0deg);
+        }
+
+        80%, 100% {
+            filter: hue-rotate(360deg);
+        }
+    }
+
+    .preLoader span::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #06EFFEff;
+        box-shadow: 0 0 10px #06EFFEff,
+                    0 0 20px #06EFFEff;
+        animation: grow 1s linear infinite;
+    }
+
+    #part01::before {
+        transform: scale(calc((var(--i) / 10)));
+        animation-delay: calc(0.1s * var(--i));
+    }
+
+    #part02::before {
+        transform: scale(calc((var(--j) / 10)));
+        animation-delay: calc(0.1s * var(--j));
+    }
+
+    @keyframes grow {
+
+        0% {
+            transform: scale(0);
+        }
+
+        80%, 100% {
+            transform: scale(1);
+        }
+    }
+
+</style>
+
+
+<script>
+
+    window.addEventListener("load", function() {
+        var preLoader = document.querySelector(".preLoader");
+        var allPage = document.getElementById("all-page");
+
+        setTimeout(function() {
+            preLoader.style.display = "none"
+            allPage.style.filter = "none";
+        }, 500);
+    });
+
+</script>

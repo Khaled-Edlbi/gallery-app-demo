@@ -1,0 +1,55 @@
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a class="first-page" href="{{ pagination_url }}&page=1">1</a>
+        <a class="back-page" href="{{ pagination_url }}&page={{ page_obj.previous_page_number }}">
+            <i class="fa-solid fa-angle-left"></i></a>
+    {% endif %}
+
+    <span class="current-page">{{ page_obj.number }}</span>
+
+    {% if page_obj.has_next %}
+        <a class="next-page" href="{{ pagination_url }}&page={{ page_obj.next_page_number }}">
+            <i class="fa-solid fa-angle-left fa-rotate-180"></i></a>
+        <a class="last-page" href="{{ pagination_url }}&page={{ page_obj.paginator.num_pages }}">
+            {{ page_obj.paginator.num_pages }}</a>
+    {% endif %}
+</div>
+
+
+<style>
+
+    .pagination {
+        display: flex;
+        align-items: center;
+    }
+
+    .pagination span {
+        color: var(--primary);
+        border-radius: 5px;
+        padding: 5px 12.6px;
+    }
+
+    .pagination a {
+        color: var(--primary);
+        border-radius: 5px;
+        padding: 5px 12.6px;
+    }
+
+    .pagination a:hover,
+    .pagination a:focus {
+        transform: scale(1.05);
+    }
+
+    .first-page {
+        margin: 5px;
+    }
+
+    .current-page {
+        margin: 5px;
+    }
+
+    .last-page {
+        margin: 5px;
+    }
+
+</style>

@@ -1,0 +1,75 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'posts_page_style.css' %}">
+    {% block head_title %}{% endblock %}
+{% endblock heads %}
+
+
+{% block header %}
+    {% include "widgets/posts_header.html" %}
+{% endblock header %}
+
+
+{% block content %}
+
+    <div class="content">
+
+        {% block body_title %}{% endblock %}
+
+        <div class="cards-box">
+
+            {% for col_obj in cols_objs %}
+
+                <div class="col">
+
+                    {% for post_obj in col_obj %}
+
+                        <div class="card">
+
+                            {% block post %}{% endblock %}
+                            
+                            {% if post_obj.body %}
+                                <div class="tag"><i class="fa-solid fa-star"></i></div>
+                            {% endif %}
+
+                            <div class="card-content">
+
+                                <div class="card-head">
+
+                                    <div class="author">
+                                        <a class="profile-img" href="{{ post_obj.id }}">
+                                             <!-- add 't' to end of image name to get small & thumbnail image -->
+                                            <img src="{{ post_obj.author.profile.image|slice:':-4' }}t{{ post_obj.author.profile.image|slice:'-4:' }}">
+                                        </a>
+                                        <span>{{ post_obj.author.profile.user }}</span>
+                                    </div>
+
+                                    <a class="download-btn" href="https://i.imgur.com/sE3MPmQ.jpg" download>
+                                        <i class="fa-solid fa-download"></i>
+                                    </a>
+
+                                </div>
+                                
+                                <div class="title-and-date">
+                                    <h3>{{ post_obj.title }}</h3>
+                                    <span class="date">{{ post_obj.date|date:'b, j Y'|capfirst }}</span>
+                                </div>
+
+                                {% if post_obj.body %}
+                                    <p>{{ post_obj.body }}</p>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer>
+        {% include "widgets/pagination.html" %}
+    </footer>
+
+{% endblock content %}

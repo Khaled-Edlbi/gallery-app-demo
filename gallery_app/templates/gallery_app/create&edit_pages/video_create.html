@@ -1,0 +1,35 @@
+{% extends "gallery_app/create&edit_pages/post_create_base.html" %}
+
+{% block uploaded_post %}
+    {% if object.image %}
+        <video preload="metadata" controls>
+            <source class="uploaded-image" type="video/mp4" src="{{ object.image }}">
+        </video>
+    {% else %}
+        <video>
+            <source class="uploaded-image" type="video/mp4" src="">
+        </video>
+    {% endif %}
+{% endblock %}
+
+
+{% block file_input %}
+    <input type="file" accept="video/mp4" id="file-input" hidden>
+{% endblock %}
+
+
+{% block api_headers %}
+
+    <script>
+        //  API Headers
+        const postType = "upload"
+        const accessToken = "{{ access_token }}"
+        {% if request.path == "/videos/create/" %}
+            const album = "iDZwfLO"
+        {% else %}
+            const album = "iDZwfLO"
+        {% endif %}
+        const file_type = "video"
+    </script>
+
+{% endblock %}

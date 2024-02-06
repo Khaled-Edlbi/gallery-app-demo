@@ -1,0 +1,117 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'post_create_style.css' %}">
+    <title>Create Post</title>
+{% endblock heads %}
+
+
+{% block header %}
+    {% include "widgets/profile_header.html" %}
+{% endblock header %}
+
+
+{% block content %}
+
+    <form method="POST" class="form-box">
+        {% csrf_token %}
+
+        <div class="text-form">
+
+            <h1>Create New Post</h1>
+
+            {{ form.as_div }}
+
+            <button class="create-btn" id="pc" type="submit">Create</button>
+
+        </div>
+
+        <div class="image-form">
+
+            <input type="text" maxlength="100" value="{{ object.image }}" required name="image" id="id_image" hidden>
+
+            <button class="upload-btn" type="button">
+
+                {% block uploaded_post %}{% endblock %}
+
+                <div class="upload-icon">
+                    <i class="fa-solid fa-icons"></i>
+                    <span>Choose Photo/Video</span>
+                </div>
+
+                <div class="spinner" style="display: none;">
+                    {% include "widgets/spinner.html" %}
+                </div>
+
+            </button>
+
+            <div class="date-input">
+                <label for="id_date">Image date:</label>
+                <input type="date" maxlength="10" value="{{ object.date|date:'Y-m-d' }}" name="date" id="id_date">
+                <i class="fa-regular fa-calendar-days" id="calendar-icon"></i>
+            </div>
+
+        </div>
+
+        <button class="create-btn" id="phone" type="submit">Create</button>
+
+    </form>
+
+    {% block file_input %}{% endblock %}
+
+    <style>
+
+        .ripples {
+            position: absolute;
+            background: #646464;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            animation: drop .5s linear;
+        }
+    
+        @keyframes drop {
+    
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0.5;
+            }
+            100% {
+                width: 1000px;
+                height: 1000px;
+                opacity: 0;
+            }
+        }
+    
+    </style>
+
+    <script>
+
+        var buttons = document.querySelectorAll(".create-btn")
+
+        buttons.forEach(element => {
+            element.addEventListener("click", function(e) {
+                let x = e.clientX - element.getBoundingClientRect().left
+                let y = e.clientY - element.getBoundingClientRect().top
+
+                let ripples = document.createElement("span")
+                ripples.className = "ripples"
+                ripples.style.left = x + "px"
+                ripples.style.top = y + "px"
+                this.appendChild(ripples)
+
+                setTimeout(() => {
+                    ripples.remove()
+                }, 1000)
+            })
+        })
+
+    </script>
+
+    {% block api_headers %}{% endblock %}
+
+    <script src="{% static 'upload_api.js' %}"></script>
+
+{% endblock content %}

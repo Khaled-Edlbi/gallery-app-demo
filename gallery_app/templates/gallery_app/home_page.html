@@ -1,0 +1,266 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'home_page_style.css' %}">
+    <title>Gallery App | Demo</title>
+{% endblock heads %}
+
+
+{% block header %}
+    {% include "widgets/home_header.html" %}
+{% endblock header %}
+
+
+{% block content %}
+
+    <!-- Hero Section -->
+
+    <section class="hero" id="home">
+
+        <div class="content">
+
+            <h2> <!-- Ghost Text -->
+                <span>D</span>
+                <span>e</span>
+                <span>m</span>
+                <span>o&nbsp</span>
+                <span>P</span>
+                <span>r</span>
+                <span>o</span>
+                <span>j</span>
+                <span>e</span>
+                <span>c</span>
+                <span>t</span>
+            </h2>
+
+            <div class="main-btn">
+                <a href="#gallery">Gallery</a>
+            </div>
+    
+        </div>
+
+    </section>
+
+
+    <!-- Section No.1 -->
+    
+    <section class="lovely-facts" id="about">
+
+        <h2 class="title">Lovely Facts</h2>
+
+        <div class="content">
+
+
+            <div class="card-container" tabindex="0">
+                <!-- This div is focusable -->
+                <div class="fact-card">
+                    <div class="card-front"><span>I</span></div>
+                    <div class="card-back">
+                        <h3>Fact One</h3><span>01</span>
+                        <p>- Some facts about your love one<br>
+                            <br>
+                            - Some facts about your love one<br>
+                            <br>
+                            - Some facts about your love one<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-container" tabindex="0">
+                <!-- This div is focusable -->
+                <div class="fact-card">
+                    <div class="card-front"><span><i class="fa-solid fa-heart-pulse"></i></span></div>
+                    <div class="card-back">
+                        <h3>Fact Two</h3><span>02</span>
+                        <p>- Some facts about your love one<br>
+                            <br>
+                            - Some facts about your love one<br>
+                            <br>
+                            - Some facts about your love one<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-container" tabindex="0">
+                <!-- This div is focusable -->
+                <div class="fact-card">
+                    <div class="card-front"><span>U</span></div>
+                    <div class="card-back">
+                        <h3>Fact Three</h3><span>03</span>
+                        <p>- Some facts about your love one<br>
+                            <br>
+                            - Some facts about your love one<br>
+                            <br>
+                            - Some facts about your love one<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Section No.2 -->
+
+    <section class="gallery" id="gallery">
+
+        <h2 class="title">Gallery</h2>
+
+        <div class="content">
+
+
+            <div class="gallery-card">
+                <div class="card-icon">
+                <i class="fa-solid fa-images"></i></div>
+                <div class="card-info">
+                    <h3>Photos</h3>
+                    <p>All photos we shared</p>
+                    <div class="btn"><a href="{% url 'photos' %}">See All</a></div>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="card-icon">
+                <i class="fa-solid fa-photo-film"></i></div>
+                <div class="card-info">
+                    <h3>Videos</h3>
+                    <p>All videos we shared</p>
+                    <div class="btn"><a href="{% url 'videos' %}">See All</a></div>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="card-icon">
+                <i class="fa-solid fa-microphone"></i></div>
+                <div class="card-info">
+                    <h3>Voices</h3>
+                    <p>All voices we shared</p>
+                    <div class="btn"><a href="{% url 'voices' %}">See All</a></div>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="card-icon">
+                <i class="fa-sharp fa-solid fa-comments"></i></div>
+                <div class="card-info">
+                    <h3>Chats</h3>
+                    <p>All conversations we had</p>
+                    <div class="btn"><a href="{% url 'chats' %}">See All</a></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Section No.3 -->
+
+    <section class="special-dates" id="dates">
+
+        <h2 class="title">Special Dates</h2>        
+
+        <div class="content">
+            
+
+            <div class="table-card" tabindex="0">
+                <!-- This div is focusable -->
+
+                <h3>july - 2023</h3>
+                
+                <table>
+
+                    <thead>
+                    <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><small>26</small></td>
+                            <td><small>27</small></td>
+                            <td><small>28</small></td>
+                            <td><small>29</small></td>
+                            <td><small>30</small></td>
+                            <td><small>31</small></td>
+                            <td>01</td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>03</td>
+                            <td>04</td>
+                            <td>05</td>
+                            <td>06</td>
+                            <td>07</td>
+                            <td>08</td>
+                        </tr>
+                        <tr>
+                            <td>09</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td><strong>12</strong></td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                        </tr>
+                        <tr>
+                            <td>30</td>
+                            <td><small>01</small></td>
+                            <td><small>02</small></td>
+                            <td><small>03</small></td>
+                            <td><small>04</small></td>
+                            <td><small>05</small></td>
+                            <td><small>06</small></td>
+                        </tr>
+                        
+                    </tbody>
+                    
+                </table>
+                
+            </div>
+
+        </div>
+        
+    </section>
+
+    <footer class="footer">
+        <p>Copyrights © <a href="https://github.com/Khaled-Edlbi">Khaled Edlbi</a></p>
+    </footer>
+
+    <style>
+        * {
+            /* Override Default Font */
+            font-family: var(--fontBackup);
+        }
+    </style>
+
+{% endblock content %}

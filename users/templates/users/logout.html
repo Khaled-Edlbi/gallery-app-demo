@@ -1,0 +1,17 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'logout_style.css' %}">
+    <title>Logout</title>
+{% endblock heads %}
+
+
+{% block content %}
+
+    <div class="form-box">
+        <h2>You have been <span>logged out</span></h2>
+    </div>
+
+    <a href="{% url 'login' %}">Login again</a>
+
+{% endblock content %}

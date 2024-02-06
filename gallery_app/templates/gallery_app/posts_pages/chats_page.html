@@ -1,0 +1,14 @@
+{% extends "gallery_app/posts_pages/posts_page_base.html" %}
+
+
+{% block head_title %}
+    <title>Chats Gallery</title>
+{% endblock head_title %}
+
+{% block body_title %}
+    <h2 class="title">Chats Gallery</h2>
+{% endblock body_title %}
+
+{% block post %}
+    <img src="{{ post_obj.image }}" alt="love you">
+{% endblock %}

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
+
+:root {
+    --primary: #f0f0f0;
+
+    --secondary: #d1d1d1;
+
+    --cyanTheme: #00fcff;
+
+    --greyTheme: #222222ff;
+
+    --darkCyan: #08e0f0;
+
+    --success: #00A550;
+
+    --danger: #dc3545;
+
+    --red: #ED1B24;
+
+    --darkRed: #d82335;
+
+    --glassGrey: rgba(255, 255, 255, 0.1);
+
+    --gradientTransparent: transparent;
+
+    --glassBorder: rgba(255, 255, 255, 0.2);
+
+    --borderHover: rgba(255, 255, 255, 0.3);
+
+    --solidGlassBorder: rgba(255, 255, 255, 0.4);
+
+    --shallowShadow: rgba(0, 0, 0, .1);
+
+    --shadow: rgba(0, 0, 0, 0.2);
+
+    --hoverShadow: rgba(0, 0, 0, 0.4);
+
+    --elevationShadow: rgba(0, 0, 0, 0.5);
+
+    --specialButton: #08e0f0;
+
+    --dropMenu: rgba(80, 80, 80, 0.9);
+
+    --footerPagination: rgba(163, 163, 163, 0.1);
+
+    --fontTheme: 'Nunito', sans-serif;
+
+    --fontBackup: 'Poppins', sans-serif;
+}

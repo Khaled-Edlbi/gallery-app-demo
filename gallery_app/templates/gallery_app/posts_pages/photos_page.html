@@ -1,0 +1,15 @@
+{% extends "gallery_app/posts_pages/posts_page_base.html" %}
+
+
+{% block head_title %}
+    <title>Photos Gallery</title>
+{% endblock head_title %}
+
+{% block body_title %}
+    <h2 class="title">Photos Gallery</h2>
+{% endblock body_title %}
+
+{% block post %}
+    <!-- add 'l' to end of image name to get large & thumbnail image -->
+    <img src="{{ post_obj.image|slice:':-4' }}l{{ post_obj.image|slice:'-4:' }}" alt="{{ post_obj.title }}">
+{% endblock %}

@@ -1,0 +1,140 @@
+body {
+    background: var(--greyTheme);
+}
+
+#all-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 0 0 0;
+}
+
+.form-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, var(--glassGrey), var(--gradientTransparent));
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 2px solid var(--glassBorder);
+    box-shadow: 0 0 15px var(--shadow);
+    color: var(--primary);
+    padding: 30px 40px;
+}
+
+.upload-btn {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 105px;
+    height: 105px;
+    background: transparent;
+    border: 2px solid var(--glassBorder);
+    border-radius: 50%;
+    box-shadow: 0 5px 10px var(--shadow);
+    margin-bottom: 50px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.upload-btn:hover,
+.upload-btn:focus {
+    transform: scale(1.02);
+    box-shadow: 0 5px 10px var(--hoverShadow);
+}
+
+.uploaded-image {
+    width: 100%;
+}
+
+label[for="id_username"],
+label[for="id_email"] {
+    font-size: 20px;
+    margin: 30px;
+}
+
+input {
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: 2px solid var(--glassBorder);
+    border-radius: 40px;
+    box-shadow: 0 5px 15px var(--shadow);
+    font-size: 16px;
+    color: var(--primary);
+    padding: 20px;
+    margin: 10px 0 60px 0;
+    transition: .3s ease;
+}
+
+input:hover,
+input:focus {
+    border-color: var(--solidGlassBorder);
+}
+
+.update-btn {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 60px;
+    background: var(--primary);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 15px var(--shadow);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--greyTheme);
+    margin-top: 25px;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+}
+
+.update-btn:hover,
+.update-btn:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px var(--shadow);
+}
+
+.errorlist {
+    list-style-type: none;
+    color: var(--danger);
+    background: var(--glassGrey);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}
+
+@media only screen and (max-width: 550px) {
+
+    .form-box {
+        border: none;
+        margin: 10px;
+        padding: 25px;
+        padding-top: 30px;
+    }
+
+    .upload-btn {
+        width: 95px;
+        height: 95px;
+        margin-bottom: 50px;
+    }
+
+    label[for="id_username"] {
+        font-size: 16px;
+        margin: 20px 25px;
+    }
+
+    input {
+        padding: 15px;
+        margin: 8px 0 45px 0;
+    }
+
+    .update-btn {
+        height: 52px;
+        font-size: 16px;
+        margin-top: 28px;
+    }
+}

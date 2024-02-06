@@ -1,0 +1,42 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'post_type_style.css' %}">
+    <title>Post Type</title>
+{% endblock heads %}
+
+
+{% block header %}
+    {% include "widgets/profile_header.html" %}
+{% endblock header %}
+
+
+{% block content %}
+
+    <h2 class="title">Choose post type!</h2>
+
+    <div class="container">
+
+        <a class="card" href="{% url 'photo-create' %}">
+            <i class="fa-solid fa-images"></i>
+            <h2>Photo</h2>
+        </a>
+
+        <a class="card" href="{% url 'videos-create' %}">
+            <i class="fa-solid fa-photo-film"></i>
+            <h2>Video</h2>
+        </a>
+
+        <a class="card" href="{% url 'voices-create' %}">
+            <i class="fa-solid fa-microphone"></i>
+            <h2>Voice</h2>
+        </a>
+
+        <a class="card" href="{% url 'chats-create' %}">
+            <i class="fa-sharp fa-solid fa-comments"></i>
+            <h2>Chat</h2>
+        </a>
+
+    </div>
+
+{% endblock content %}

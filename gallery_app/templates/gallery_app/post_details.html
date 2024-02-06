@@ -1,0 +1,123 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'post_details_style.css' %}">
+    <title>Post Details</title>
+{% endblock heads %}
+
+
+{% block header %}
+    {% include "widgets/profile_header.html" %}
+{% endblock header %}
+
+
+{% block content %}
+
+    <div class="container">
+
+        <h2 class="title">{{ object.title }}</h2>
+
+        <div class="card">
+
+            {% if object.image|slice:"-3:" == 'mp4' %}
+                <video preload="metadata" controls>
+                    <source src="{{ object.image }}" type="video/mp4">
+                </video>
+                <style>
+                    .card {
+                        flex-direction: column;
+                    }
+            
+                    .card:hover,
+                    .card:focus {
+                        min-height: 8em;
+                    }
+            
+                    .card .card-content {
+                        min-height: 146px;
+                        border-radius: 2px;
+                        bottom: 0;
+                        opacity: 0;
+                        transition: 0s;
+                    }
+            
+                    .card:hover .card-content,
+                    .card:focus .card-content {
+                        position: relative;
+                        opacity: 1;
+                    }
+            
+                    video {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 2px;
+                    }
+            
+                    video::-webkit-media-controls {
+                        opacity: 0;
+                        transition: 0.5s;
+                    }
+            
+                    video:hover::-webkit-media-controls,
+                    video:focus::-webkit-media-controls {
+                        opacity: 1;
+                    }
+                </style>
+            {% else %}
+                <img src="{{ object.image }}">
+            {% endif %}
+
+            {% if object.body %}
+                <div class="tag"><i class="fa-solid fa-star"></i></div>
+            {% endif %}
+
+            <div class="card-content">
+
+                <div class="card-head">
+
+                    <div class="author">
+                        <a class="profile-img" href="#">
+                            <!-- add 't' to end of image name to get small & thumbnail image -->
+                           <img src="{{ object.author.profile.image|slice:':-4' }}t{{ object.author.profile.image|slice:'-4:' }}">
+                       </a>
+                       <span>{{ object.author.profile.user }}</span>
+                    </div>
+
+                    <a class="download-btn" href="{{ object.image }}" download>
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+
+                </div>
+
+                <div class="title-and-date">
+                    <h3>{{ object.title }}</h3>
+                    <span class="date">{{ object.date|date:'b, j Y'|capfirst }}</span>
+                </div>
+
+                {% if object.body %}
+                    <p>{{ object.body }}</p>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <div class="btn-wrapper">
+
+            <a class="done-btn" href="{% url 'profile' %}">
+                <i class="fa-solid fa-check"></i>
+            </a>
+
+            <a class="edit-btn" href="{{ request.path }}edit">
+                <i class="fa-solid fa-pencil"></i>
+            </a>
+
+            <a class="delete-btn" href="{{ request.path }}delete">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+{% endblock content %}

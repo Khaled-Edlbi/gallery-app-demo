@@ -1,0 +1,446 @@
+<header>
+
+    <input type="checkbox" id="nav_check" hidden>
+
+    <a href="#" class="logo">Gallery<i id="heart" class="fa-regular fa-heart"></i>App</a>
+
+    <div class="control-section">
+
+        <div class="filter-bar">
+            <a class="sort-btn" href="{{ sorting_url }}&sort={{ ASC_DES }}">
+                <i class="{{ ASC_DES_icon }}"></i></a>
+            <div class="filter-btn">
+                <i class="fa-solid fa-filter"></i>
+                <ul class="menu">
+                    <li id="label">Order By:</li>
+                    <li><a href="{{ ordering_url }}&order-by=date">Post Date</a></li>
+                    <li><a href="{{ ordering_url }}&order-by=created">Create Date</a></li>
+                    <li><a href="{{ ordering_url }}&order-by=modified">Modify Date</a></li>
+                </ul>
+            </div>
+            <form method="GET" action="{% url 'photos' %}">
+                <div class="search-bar" id="pc-search">
+                    <input class="search-box" type="text" name="q" placeholder="Search">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+        </div>
+
+        <label for="nav_check" class="hamburger">
+            <div class="remove"></div>
+            <div class="leg"></div>
+            <div class="x-icon"></div>
+            <div class="remove"></div>
+        </label>
+
+    </div>
+
+    <nav class="navbar">
+
+        <ul>
+            <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i>Home</a></li>
+            <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i>Profile</a></li>
+            <li><a href="#"><i class="fa-solid fa-icons"></i>Gallery</a>
+                <ul>
+                    {% if not view_page == 'photos' %}
+                        <li><a href="{% url 'photos' %}"><i class="fa-solid fa-images"></i>Photos</a></li>
+                    {% endif %}
+                    {% if not view_page == 'videos' %}
+                    <li><a href="{% url 'videos' %}"><i class="fa-solid fa-photo-film"></i>Videos</a></li>
+                    {% endif %}
+                    {% if not view_page == 'voices' %}
+                    <li><a href="{% url 'voices' %}"><i class="fa-solid fa-microphone"></i>Voices</a></li>
+                    {% endif %}
+                    {% if not view_page == 'chats' %}
+                    <li><a href="{% url 'chats' %}"><i class="fa-sharp fa-solid fa-comments"></i>Chats</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+
+        <form method="GET" action="{% url 'photos' %}">
+            <div class="search-bar" id="phone-search">
+                <input class="search-box" type="text" name="q" placeholder="Search">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </form>
+
+    </nav>
+
+</header>
+
+
+<style>
+
+    /* Fonts */
+
+    @import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+</style>
+
+<style>
+
+    header {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--glassGrey);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 5px 10px var(--shallowShadow);
+        padding: 0.5px 10px;
+    }
+
+    .logo {
+        font-family: 'Averia Sans Libre', cursive;
+        font-weight: bolder;
+        font-size: 30px;
+        letter-spacing: 0.7px;
+        color: var(--primary);
+        text-shadow: 0 0 5px var(--shallowShadow);
+        border-radius: 20px;
+        margin-left: 60px;
+        margin-bottom: 3px;
+        transition: 0.4s ease;
+    }
+
+    .logo i {
+        padding: 3px;
+    }
+
+    .logo:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 5px var(--shallowShadow);
+    }
+
+    .navbar {
+        position: absolute;
+        top: 45px;
+        left: -335px;
+        width: 335px;
+        height: 100vh;
+        height: 100svh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        background: linear-gradient(135deg, rgb(54, 54, 54), rgb(54, 54, 54, 0.95));
+        overflow: scroll;
+        transition: .4s ease;
+    }
+
+    #nav_check:checked ~ nav {
+        left: 0;
+        box-shadow: 10px 8px 10px var(--shallowShadow);
+    }
+
+    .navbar ul {
+        list-style: none;
+        text-align: center;
+    }
+
+    .navbar ul li {
+        display: inline-block;
+        width: 95%;
+        margin-top: 20px;
+    }
+
+    .navbar ul li a {
+        display: block;
+        font-family: 'Varela Round', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--primary);
+        text-shadow: 0 0 5px var(--shallowShadow);
+        border-radius: 5px;
+        padding: 15px;
+        transition: 0.2s ease;
+    }
+
+    .navbar ul li a:hover {
+        background-color: var(--glassGrey);
+        box-shadow: 0 0 5px var(--shallowShadow);
+        transform: scale(1.03);
+    }
+
+    .navbar ul li i {
+        padding-right: 15px;
+    }
+
+    .navbar ul li ul li {
+        border-top: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    .navbar ul li ul li i {
+        padding-right: 15px;
+    }
+
+    .hamburger {
+        position: relative;
+        height: fit-content;
+        padding: 3px 8px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .hamburger:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hamburger div {
+        width: 27px;
+        height: 3px;
+        margin: 5px 0;
+        background-color: var(--primary);
+        border-radius: 500px;
+        transition: .4s ease;
+    }
+
+    .hamburger .x-icon {
+        position: absolute;
+        top: 11px;
+        opacity: 0;
+        transition: .4s ease;
+    }
+
+    /* x-icon animation */
+
+    .hamburger.active .remove {
+        opacity: 0;
+        width: 0;
+    }
+
+    .hamburger.active .leg {
+        transform: rotate(45deg);
+    }
+
+    .hamburger.active .x-icon {
+        transform: rotate(135deg);
+        opacity: 1;
+    }
+
+    #phone-search {
+        display: none;
+        margin-bottom: 60px;
+    }
+
+</style>
+
+<style>
+
+    .control-section {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+    }
+
+    .filter-bar {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .sort-btn {
+        margin-right: 10px;
+        transition: .3s ease;
+    }
+
+    .sort-btn i {
+        color: var(--primary);
+    }
+
+    .sort-btn:hover,
+    .sort-btn:focus {
+        transform: scale(1.1);
+    }
+
+    .filter-btn {
+        position: relative;
+        color: var(--primary);
+        transition: .3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn:focus {
+        transform: scale(1.1);
+    }
+
+    .filter-btn .menu {
+        display: none;
+        position: absolute;
+        top: 35px;
+        width: 150px;
+        background: var(--dropMenu);
+        border-radius: 10px;
+        list-style: none;
+        padding: 10px;
+    }
+
+    .filter-btn.active .menu {
+        display: block;
+    }
+
+    .filter-btn .menu #label {
+        border: none;
+        padding: 5px 0;
+        margin-bottom: 15px;
+    }
+
+    .filter-btn .menu li {
+        text-align: center;
+        border-top: 1px solid var(--glassGrey);
+        padding: 5px;
+    }
+
+    .filter-btn .menu li:hover,
+    .filter-btn .menu li:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+    }
+
+    .filter-btn .menu li a {
+        color: var(--primary);
+        padding: 5px 12px;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        width: 238px;
+        background: var(--shallowShadow);
+        border: 1px solid var(--glassBorder);
+        border-radius: 40px;
+        box-shadow: 0 0 10px var(--shallowShadow);
+        margin-left: 18px;
+        transition: .5s ease;
+    }
+
+    .search-bar:hover,
+    .search-bar:focus {
+        border: 1px solid var(--borderHover);
+    }
+
+    .search-bar button {
+        width: 80px;
+        font-size: 15px;
+        background: transparent;
+        box-shadow: none;
+        border: none !important;
+        cursor: pointer;
+        transition: .3s ease;
+    }
+
+    .search-box {
+        background: transparent;
+        width: 200px;
+        outline: none;
+        border: none;
+        border-radius: 40px 0 0 40px;
+        color: var(--primary);
+        font-size: 15px;
+        text-align: start;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .search-box::placeholder {
+        color: var(--secondary)
+    }
+
+    .search-bar i {
+        border: none;
+        color: var(--secondary);
+        transition: .5s ease;
+    }
+
+    .search-bar:hover i,
+    .search-bar:focus i {
+        color: var(--primary);
+    }
+
+</style>
+
+<style>
+
+    @media only screen and (max-width: 940px) {
+
+        header {
+            padding: 0 10px 0 18px;
+        }
+
+        .logo {
+            margin-left: 0;
+        }
+
+        .navbar {
+            left: -275px;
+            width: 275px;
+        }
+
+        #nav_check:checked ~ .logo {
+            margin-left: 24px;
+        }
+    }
+
+    @media only screen and (max-width: 630px) {
+
+        .filter-btn .menu {
+            right: 0;
+        }
+
+        #pc-search {
+            display: none;
+        }
+
+        #phone-search {
+            display: flex;
+        }
+    }
+
+</style>
+
+
+<script>
+
+    // Beating Heart Animation
+
+    var logo = document.querySelector(".logo");
+    var heart = document.getElementById("heart");
+    var animationTimeout;
+
+    function startHeartAnimation() {
+        heart.classList.add("fa-regular", "fa-heart", "fa-beat");
+    }
+
+    function stopHeartAnimation() {
+        animationTimeout = setTimeout(function() {
+            heart.classList.remove("fa-beat");
+        }, 500);
+    }
+
+    logo.addEventListener("mouseenter", startHeartAnimation);
+    logo.addEventListener("mouseleave", stopHeartAnimation);
+    logo.addEventListener("focus", startHeartAnimation);
+    logo.addEventListener("blur", stopHeartAnimation);
+
+</script>
+
+<script>
+
+    var xIcon = document.querySelector(".hamburger");
+    xIcon.addEventListener("click", function() {
+        xIcon.classList.toggle("active")
+    });
+
+</script>
+
+<script>
+    var filter_btn = document.querySelector(".filter-btn");
+
+    filter_btn.onclick = function(){
+        filter_btn.classList.toggle("active")
+    };
+</script>

@@ -1,0 +1,133 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'profile_style.css' %}">
+    <title>{{ user.username|title }} Profile</title>
+{% endblock heads %}
+
+
+{% block header %}
+    {% include "widgets/profile_header.html" %}
+{% endblock header %}
+
+
+{% block content %}
+
+    <section class="banner">
+
+        <div class="user-card">
+            <a class="profile-img" href="{% url 'profile-update' %}">
+                <img src="{{ user.profile.image }}">
+                <span><i class="fa-solid fa-pencil"></i></span>
+            </a>
+            <h2 class="username">{{ user.username }}</h2>
+            <div class="content-count">
+                <h3><i class="fa-solid fa-icons"></i>{{ posts_count }}</h3>
+                <h3><i class="fa-solid fa-images"></i>{{ photos_count }}</h3>
+                <h3><i class="fa-solid fa-photo-film"></i>{{ videos_count }}</h3>
+                <h3><i class="fa-solid fa-microphone"></i>{{ voices_count }}</h3>
+                <h3><i class="fa-sharp fa-solid fa-comments"></i>{{ chats_count }}</h3>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="list-box">
+
+        <div class="row">
+            <span class="id">Id</span>
+            <span class="image">Image</span>
+            <span class="title">Title</span>
+            <span class="date">Date</span>
+            <span class="modified">Modified</span>
+            <span class="created">Created</span>
+            <div class="create-post">
+                <a href="{% url 'select-post-type' %}">
+                <i class="fa-solid fa-plus"></i></a>
+            </div>
+            <div class="filter-bar">
+                <a class="sort-btn" href="{{ sorting_url }}&sort={{ ASC_DES }}">
+                    <i class="{{ ASC_DES_icon }}"></i></a>
+                <div class="filter-btn">
+                    <i class="fa-solid fa-filter"></i>
+                    <ul class="menu">
+                        <li id="label">Filter By:</li>
+                        <li><a href="{{ filtering_url }}&filter=photos">Photos</a></li>
+                        <li><a href="{{ filtering_url }}&filter=videos">Videos</a></li>
+                        <li><a href="{{ filtering_url }}&filter=voices">Voices</a></li>
+                        <li><a href="{{ filtering_url }}&filter=chats">Chats</a></li>
+                        <br>
+                        <li id="label">Order By:</li>
+                        <li><a href="{{ ordering_url }}&order-by=date">Post Date</a></li>
+                        <li><a href="{{ ordering_url }}&order-by=modified">Modify Date</a></li>
+                        <li><a href="{{ ordering_url }}&order-by=created">Create Date</a></li>
+                    </ul>
+                </div>
+                <form method="GET" action="{% url 'profile' %}">
+                    <div class="search-bar">
+                        <input class="search-box" type="text" name="q" placeholder="Search">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="row">
+            <div class="line"></div>
+        </div>
+
+        {% for obj in page_obj %}
+            <div class="row">
+                <span class="post-id">{{ obj.id }}</span>
+                {% if obj.image|slice:"-3:" == 'mp4' %}
+                    <video class="post-img" preload="metadata" controls>
+                        <source src="{{ obj.image }}" type="video/mp4">
+                    </video>
+                {% else %}
+                    <!-- add 'm' to end of image name to get medium & thumbnail image -->
+                    <img class="post-img" src="{{ obj.image|slice:':-4' }}m{{ obj.image|slice:'-4:' }}">
+                {% endif %}
+                <span class="post-title">{{ obj.title|title }}</span>
+                <span class="post-date">{{ obj.date|date:'b, j Y'|capfirst }}</span>
+                <span class="post-modify">
+                    {% now "d-m-y" as current_date %}
+                    {% if obj.modified|date:"d-m-y" == current_date %}
+                        {{ obj.modified|timesince }} ago
+                    {% else %}
+                        {{ obj.modified|date:'b, j Y'|capfirst }}
+                    {% endif %}
+                </span>
+                <span class="post-create">{{ obj.created|date:'b, j Y'|capfirst }}</span>
+                <div class="CRUD-btn">
+                    <a class="edit-btn" href="{% url obj.view_name pk=obj.id %}edit">Edit</a>
+                    <a class="view-btn" href="{% url obj.view_name pk=obj.id %}">View</a>
+                    <a class="delete-btn" href="{% url obj.view_name pk=obj.id %}delete">Delete</a>
+                </div>
+                <div class="line"></div>
+            </div>
+        {% endfor %}
+
+        <div class="last-row">
+            {% include "widgets/pagination.html" %}
+        </div>
+
+    </section>
+
+    <script>
+
+        var create_btn = document.querySelector(".create-post a");
+        var plus_icon = document.querySelector(".create-post a i");
+        var filter_btn = document.querySelector(".filter-btn");
+
+        create_btn.onclick = function(){
+            plus_icon.className = "fa-solid fa-plus fa-bounce"
+        };
+
+        filter_btn.onclick = function(){
+            filter_btn.classList.toggle("active")
+        };
+
+    </script>
+
+{% endblock content %}

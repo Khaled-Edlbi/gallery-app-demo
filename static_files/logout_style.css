@@ -1,0 +1,58 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('backgrounds/auth.jpg');
+    backdrop-filter: blur(20px);
+    background-size: cover;
+    background-position: center;
+}
+
+#all-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.form-box {
+    background: linear-gradient(135deg, var(--glassGrey), var(--gradientTransparent));
+    border-radius: 20px;
+    border-top: 2px solid var(--glassBorder);
+    border-left: 2px solid var(--glassBorder);
+    box-shadow: 0 5px 10px var(--elevationShadow);
+    color: var(--primary);
+    padding: 30px 50px;
+    margin: 20px;
+}
+
+h2 {
+    font-size: 25px;
+    text-align: center;
+}
+
+h2 span {
+    color: var(--red);
+}
+
+a {
+    font-size: 22px;
+    color: aqua;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+@media only screen and (max-width: 450px) {
+
+    h2 {
+        font-size: 20px;
+    }
+
+    a {
+        font-size: 20px;
+    }
+}

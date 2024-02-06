@@ -1,0 +1,49 @@
+<style>
+
+    .ripples {
+        position: absolute;
+        background: #646464;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        animation: drop .5s linear;
+    }
+
+    @keyframes drop {
+
+        0% {
+            width: 0;
+            height: 0;
+            opacity: 0.5;
+        }
+        100% {
+            width: 1000px;
+            height: 1000px;
+            opacity: 0;
+        }
+    }
+
+</style>
+
+
+<script>
+
+    var button = document.getElementById("ripples")
+
+    button.addEventListener("click", function(e) {
+        let x = e.clientX - button.getBoundingClientRect().left
+        let y = e.clientY - button.getBoundingClientRect().top
+
+        let ripples = document.createElement("span")
+        ripples.className = "ripples"
+        ripples.style.left = x + "px"
+        ripples.style.top = y + "px"
+        this.appendChild(ripples)
+
+        setTimeout(() => {
+            ripples.remove()
+        }, 1000)
+    })
+
+</script>

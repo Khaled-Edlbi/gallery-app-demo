@@ -1,0 +1,224 @@
+body {
+    position: relative;
+    background: var(--greyTheme);
+}
+
+.content {
+    padding: 100px 0;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px var(--shallowShadow);
+    color: var(--primary);
+    margin: 0 auto;
+    margin-bottom: 90px;
+    border-bottom: 1px solid var(--primary);
+    width: 40%;
+    padding: 10px;
+}
+
+.cards-box {
+    display: grid;
+    grid-template-rows: 4fr;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+    grid-gap: 0 20px;
+    margin: 0 50px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 8em;
+    background: linear-gradient(135deg, var(--glassGrey), var(--gradientTransparent));
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--elevationShadow);
+    color: var(--primary);
+    margin-top: 20px;
+    transition: 0.3s ease;
+}
+
+/* .card:hover,
+.card:focus {
+    min-height: 250px;
+} */
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card .tag {
+    position: absolute;
+    top: 0; right: 0;
+    transform: translate(0, 0);
+    background: var(--glassGrey);
+    backdrop-filter: blur(100px);
+    color: #FDEE00;
+    padding: 8px;
+    border-bottom-left-radius: 10px;
+}
+
+.card .tag i {
+    font-size: 18px;
+}
+
+.card .card-content {
+    position: absolute;
+    bottom: -270px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 250px;
+    background: var(--glassGrey);
+    backdrop-filter: blur(100px);
+    border-radius: 10px;
+    padding: 15px;
+    overflow: scroll;
+    transition: 0.3s ease;
+}
+
+.card:hover .card-content,
+.card:focus .card-content {
+    bottom: 0;
+}
+
+.card-content .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--glassGrey);
+    margin-bottom: 20px;
+}
+
+.card-head .author {
+    display: flex;
+    align-items: center;
+}
+
+.card-head .author .profile-img {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--glassGrey);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--shallowShadow);
+}
+
+.card-head .author .profile-img:hover,
+.card-head .author .profile-img:focus {
+    transform: scale(1.02);
+}
+
+.card-head .author .profile-img img {
+    width: 100%;
+}
+
+.card-head .author span {
+    font-size: 16px;
+    margin: 10px;
+}
+
+.card-head .download-btn {
+    font-size: 20px;
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--shallowShadow);
+    padding: 5px 10px;
+}
+
+.download-btn:hover,
+.download-btn:focus {
+    transform: scale(1.05);
+}
+
+.title-and-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-content .date {
+    color: var(--secondary);
+}
+
+.card-content p {
+    white-space: pre-line;
+    margin: 10px 0;
+}
+
+footer {
+    position: absolute;
+    right:0; bottom: 0; left:0;
+    display: flex;
+    justify-content: end;
+    background: var(--shallowShadow);
+    box-shadow: 5px 0 10px var(--shallowShadow);
+    padding: 5px 65px;
+}
+
+
+/* Override Pagination Style */
+
+.content-count {
+    background: var(--footerPagination);
+}
+
+.pagination span {
+    background: var(--footerPagination);
+}
+
+.pagination a {
+    background: var(--footerPagination);
+}
+
+
+/* ############################## */
+/*            Queries             */
+/* ############################## */
+
+
+@media only screen and (max-width: 940px) {
+
+    .title {
+        width: 400px;
+        margin-bottom: 65px;
+    }
+}
+
+@media only screen and (max-width: 630px) {
+
+    .cards-box {
+        margin: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+
+    .title {
+        width: 75vw;
+    }
+
+    footer {
+        justify-content: center;
+        padding: 5px 10px;
+    }
+}
+
+/* ############################## */
+/*         End of Queries         */
+/* ############################## */

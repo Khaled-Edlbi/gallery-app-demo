@@ -1,0 +1,27 @@
+{% extends "gallery_app/create&edit_pages/post_create_base.html" %}
+
+{% block uploaded_post %}
+    <img class="uploaded-image" src="{{ object.image }}">
+{% endblock %}
+
+
+{% block file_input %}
+    <input type="file" accept="image/jpeg,image/png,image/gif" id="file-input" hidden>
+{% endblock %}
+
+
+{% block api_headers %}
+
+    <script>
+        //  API Headers
+        const postType = "image"
+        const accessToken = "{{ access_token }}"
+        {% if request.path == "/photos/create/" %}
+            const album = "iDZwfLO"
+        {% else %}
+            const album = "iDZwfLO"
+        {% endif %}
+        const file_type = "image"
+    </script>
+
+{% endblock %}

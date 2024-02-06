@@ -1,0 +1,101 @@
+{% extends "gallery_app/base.html" %}
+{% load static %}
+{% block heads %}
+    <link rel="stylesheet" href="{% static 'login_style.css' %}">
+    <title>Login</title>
+{% endblock heads %}
+
+
+{% block content %}
+
+    <div class="form-box">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <h1>Login</h1>
+
+            {{ form.as_div }}
+
+            <div class="remember-forget">
+                <span><input type="checkbox"> Remember me</span>
+                <a href="#">Forget password?</a>
+            </div>
+
+            <button class="login-btn" id="ripples" type="submit">Login</button>
+
+            <div class="register-link">
+                <p>Don't have an account?
+                    <a href="{% url 'register' %}"> Register</a>
+                </p>
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <script>
+
+        var labelElements = document.querySelectorAll('label');
+        for (var i = 0; i < labelElements.length; i++) {
+            labelElements[i].parentNode.removeChild(labelElements[i]);
+        }
+
+        var error_msg = document.querySelector(".errorlist")
+
+        if (error_msg) {
+            var child = 5
+        } else {
+            var child = 4
+        }
+
+        var username_input = document.querySelector(".form-box div")
+        var password_input = document.querySelector(`.form-box div:nth-child(${child})`)
+
+        if (username_input) {
+            username_input.className = "input-box"
+            let newIcon = document.createElement("i")
+            newIcon.classList.add("fa-solid", "fa-user")
+            username_input.appendChild(newIcon)
+        }
+
+        if (password_input) {
+            password_input.className = "input-box"
+            let newIcon = document.createElement("i");
+            newIcon.classList.add("fa-solid", "fa-lock")
+            newIcon.id = "lock-icon"
+            password_input.appendChild(newIcon)
+        }
+
+        var username = document.getElementById("id_username")
+        var password = document.getElementById("id_password")
+        var lockIcon = document.getElementById("lock-icon")
+
+        if (username) {
+            username.setAttribute("placeholder", "Username")
+            username.setAttribute("value", "demo")
+        }
+
+        if (password) {
+            password.setAttribute("placeholder", "Password")
+            password.setAttribute("value", "UDTIgh&9yVrLBtaz5e38")
+        }
+
+        lockIcon.onclick = function() {
+
+            if(password.type == "password") {
+                password.type = "text"
+                lockIcon.className = "fa-solid fa-lock-open"
+            } else {
+                password.type = "password"
+                lockIcon.className = "fa-solid fa-lock"
+            }
+        }
+
+    </script>
+
+    {% include "widgets/ripples_effect.html" %}
+
+{% endblock content %}

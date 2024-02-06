@@ -1,0 +1,59 @@
+{% extends "gallery_app/posts_pages/posts_page_base.html" %}
+
+
+{% block head_title %}
+    <title>Voices Gallery</title>
+{% endblock head_title %}
+
+{% block body_title %}
+    <h2 class="title">Voices Gallery</h2>
+{% endblock body_title %}
+
+{% block post %}
+
+    <video controls preload="metadata"><source src="{{ post_obj.image }}" type="video/mp4">miss you</video>
+
+    <style>
+
+        .card {
+            flex-direction: column;
+        }
+
+        .card:hover,
+        .card:focus {
+            min-height: 8em;
+        }
+
+        .card .card-content {
+            min-height: 146px;
+            border-radius: 2px;
+            bottom: 0;
+            opacity: 0;
+            transition: 0s;
+        }
+
+        .card:hover .card-content,
+        .card:focus .card-content {
+            position: relative;
+            opacity: 1;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+        }
+
+        video::-webkit-media-controls {
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        video:hover::-webkit-media-controls,
+        video:focus::-webkit-media-controls {
+            opacity: 1;
+        }
+
+    </style>
+
+{% endblock %}
