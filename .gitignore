@@ -1,6 +1,9 @@
 # JetBrains IDE files
 .idea/
 
+# folder icon
+desktop.ini
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
