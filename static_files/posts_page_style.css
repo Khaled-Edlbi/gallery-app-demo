@@ -85,7 +85,7 @@ body {
     backdrop-filter: blur(100px);
     border-radius: 4px;
     padding: 15px;
-    overflow: scroll;
+    overflow-y: scroll;
     transition: 0.3s ease;
 }
 

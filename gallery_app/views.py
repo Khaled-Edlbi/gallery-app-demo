@@ -41,7 +41,7 @@ def views_abstract(request, view_page, model):
 
     content_count = posts_list.count()
 
-    paginator = Paginator(posts_list, 40)
+    paginator = Paginator(posts_list, 20)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
